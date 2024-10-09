@@ -24,7 +24,7 @@
             repo,
             path: `history/${slug}.yml`,
             per_page: 28,
-          })
+          }),
         )
       ).data.reverse();
     } catch (error) {
@@ -40,8 +40,14 @@
     data = commits
       .filter((commit) => commit.commit.message.includes("ms) [skip ci]"))
       .map((commit) => parseInt(commit.commit.message.split(" in ")[1].split("ms")[0]));
+    data = commits
+      .filter((commit) => commit.commit.message.includes("[Code : "))
+      .map((commit) => parseInt(commit.commit.message.split("[Code : ")[1].split("] ")[0].trim()));
     labels = commits
       .filter((commit) => commit.commit.message.includes("ms) [skip ci]"))
+      .map((commit) => new Date(commit.commit.committer.date).toLocaleString(config.i18n.locale));
+    labels = commits
+      .filter((commit) => commit.commit.message.includes("[Code : "))
       .map((commit) => new Date(commit.commit.committer.date).toLocaleString(config.i18n.locale));
     loading = false;
   });

@@ -37,9 +37,9 @@
     <Loading />
   {:else if summary}
     <h1>
-      <a class="no-underline" href={summary.url.startsWith('$') ? '#' : summary.url}>{summary.name}</a>
+      <a class="no-underline" href={summary?.url && summary?.url.startsWith('$') ? '#' : summary?.url}>{summary.name}</a>
       <span class={`tag ${summary.status}`}>
-        {summary.status === 'up' ? config.i18n.up : config.i18n.down}
+        {summary?.status === 'pass' || summary?.status === 'up' ? config.i18n.up : config.i18n.down}
       </span>
     </h1>
     <dl>

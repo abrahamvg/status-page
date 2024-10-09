@@ -164,11 +164,20 @@ article.up {
 .tag.up {
   background: var(--tag-up-background-color) !important;
 }
+.tag.pass {
+  background: var(--tag-up-background-color) !important;
+}
 .tag.open,
 .tag.down {
   background: var(--tag-down-background-color) !important;
 }
+.tag.fail {
+  background: var(--tag-down-background-color) !important;
+}
 .tag.degraded {
+  background: var(--tag-degraded-background-color) !important;
+}
+.tag.warning {
   background: var(--tag-degraded-background-color) !important;
 }
 
